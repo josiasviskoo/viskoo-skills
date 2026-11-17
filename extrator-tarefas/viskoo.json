@@ -1,0 +1,17 @@
+{
+  "id": "extrator-tarefas",
+  "nome": "Extrair tarefas da reunião",
+  "descricao": "Lê a reunião inteira e separa o que precisa ser feito em tarefas para conferir, mudar de cliente e criar.",
+  "icone": "✅",
+  "aparece_em": ["transcricao", "chat"],
+  "entradas": [
+    { "id": "transcricao", "tipo": "transcricao", "rotulo": "Transcrição da reunião", "obrigatorio": true, "origem": "contexto_ou_pergunta" },
+    { "id": "cliente", "tipo": "projeto", "rotulo": "Cliente principal da reunião", "ajuda": "Sem cliente: a IA atribui cada tarefa pelo conteúdo", "obrigatorio": false, "origem": "contexto_ou_pergunta" }
+  ],
+  "perguntas_ia": false,
+  "materiais": false,
+  "modo": "texto",
+  "nivel": "padrao",
+  "saidas": [{ "tipo": "tarefas" }],
+  "teto_usd": 1.5
+}

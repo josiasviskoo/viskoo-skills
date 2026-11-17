@@ -1,0 +1,23 @@
+{
+  "id": "roteiro-reels",
+  "nome": "Roteiros de Reels (orgânico)",
+  "descricao": "Roteiros de locução para Reels, TikTok e Shorts no método da agência: gancho, desenvolvimento e fechamento, em partes curtas para gravar.",
+  "icone": "🎥",
+  "aparece_em": ["post", "projeto", "tarefa", "chat"],
+  "entradas": [
+    { "id": "cliente", "tipo": "projeto", "rotulo": "Cliente", "obrigatorio": true, "origem": "contexto_ou_pergunta" },
+    { "id": "post", "tipo": "post", "rotulo": "Post do calendário", "obrigatorio": false, "origem": "contexto" },
+    { "id": "tarefa", "tipo": "tarefa", "rotulo": "Tarefa", "obrigatorio": false, "origem": "contexto" },
+    { "id": "tema", "tipo": "texto_longo", "rotulo": "Tema ou ideia", "ajuda": "Opcional quando vem de um post ou tarefa", "obrigatorio": false },
+    { "id": "quantidade", "tipo": "escolha", "rotulo": "Quantos roteiros", "opcoes": ["1", "3", "6"], "obrigatorio": true },
+    { "id": "plataforma", "tipo": "escolha", "rotulo": "Onde vai ser publicado", "opcoes": ["Reels", "TikTok", "Shorts", "Todas"], "obrigatorio": true }
+  ],
+  "perguntas_ia": true,
+  "materiais": true,
+  "modo": "texto",
+  "nivel": "padrao",
+  "saidas": [
+    { "tipo": "documento", "formato": "docx", "destino": "pasta", "nome": "{CLIENTE} [roteiros] reels {data}" }
+  ],
+  "teto_usd": 1
+}

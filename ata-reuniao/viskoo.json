@@ -1,0 +1,22 @@
+{
+  "id": "ata-reuniao",
+  "nome": "Gerar ATA da reunião",
+  "descricao": "A transcrição vira a ATA completa no modelo da agência (Word na pasta do cliente) e as tarefas da agência para conferir e criar.",
+  "icone": "📝",
+  "aparece_em": ["transcricao", "projeto", "chat"],
+  "entradas": [
+    { "id": "transcricao", "tipo": "transcricao", "rotulo": "Transcrição da reunião", "obrigatorio": true, "origem": "contexto_ou_pergunta" },
+    { "id": "cliente", "tipo": "projeto", "rotulo": "Cliente", "obrigatorio": true, "origem": "contexto_ou_pergunta" },
+    { "id": "tipo", "tipo": "escolha", "rotulo": "Tipo da reunião", "opcoes": ["Acompanhamento", "Briefing", "Comercial", "Alinhamento interno"], "obrigatorio": true },
+    { "id": "participantes", "tipo": "texto", "rotulo": "Quem participou", "ajuda": "Opcional: a ATA tenta descobrir pela conversa", "obrigatorio": false }
+  ],
+  "perguntas_ia": false,
+  "materiais": false,
+  "modo": "texto",
+  "nivel": "padrao",
+  "saidas": [
+    { "tipo": "documento", "formato": "docx", "destino": "pasta", "nome": "{CLIENTE} [ata] reunião de {tipo} {data}" },
+    { "tipo": "tarefas" }
+  ],
+  "teto_usd": 1.5
+}
