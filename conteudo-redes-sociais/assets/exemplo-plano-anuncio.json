@@ -1,0 +1,70 @@
+{
+  "projeto": "clinica-sorriso-ads-lote-1",
+  "modo": "anuncio",
+  "tipo": "Meta Ads static creative",
+  "caso_de_uso": "ads-marketing",
+  "marca": {
+    "nome": "Clínica Sorriso",
+    "cores": {
+      "brand primary": "#0E7C86",
+      "brand accent": "#F2B705",
+      "dark text": "#0B2B30",
+      "light background": "#F4FAFA"
+    },
+    "fontes": { "all texts": "Open Sans, weights bold / semibold / regular by hierarchy" }
+  },
+  "estilo": "persuasive, clean and modern healthcare advertising, bright and trustworthy, one strong focal image per creative",
+  "referencias": [
+    { "arquivo": "logo.png", "papel": "brand logo: reproduce it EXACTLY (no redrawing, no distortion, original proportions), small, in one corner" }
+  ],
+  "restricoes": [
+    "the logo must not be distorted, recolored or redrawn",
+    "a supporting graphic element (continuity shape) in brand colors, never a repeated photo",
+    "one clear pill-shaped CTA button"
+  ],
+  "evitar": ["cluttered layouts", "more than one photo per creative", "stock-photo cliché smiles with fake white teeth"],
+  "legenda": "Avaliação gratuita em Curitiba. Agende pelo link.",
+  "slides": [
+    {
+      "formato": "1:1",
+      "objetivo": "angle: fear of pain. Reassure that the treatment is painless",
+      "fundo": "light background with a soft teal diagonal shape",
+      "visual": "photorealistic relaxed adult patient in a modern dental chair, natural light",
+      "layout": "photo on the right 55%; headline and subheadline on the left; city tag above the headline; CTA button below; logo top-left",
+      "textos": {
+        "tag": "Em Curitiba",
+        "titulo": "Tratamento sem dor do começo ao fim",
+        "subtitulo": "Anestesia computadorizada e equipe especializada",
+        "cta": "Agende sua avaliação"
+      },
+      "mostrar_marca": false
+    },
+    {
+      "formato": "1:1",
+      "objetivo": "angle: speed. Smile ready in a few appointments",
+      "fundo": "solid brand teal #0E7C86",
+      "visual": "close-up of a confident smile, photorealistic, cropped at the bottom half",
+      "layout": "big headline at the top in white with the second line in yellow accent; photo at the bottom; CTA button bottom-left; logo top-right",
+      "textos": {
+        "tag": "Em Curitiba",
+        "titulo": "Seu novo sorriso em poucas consultas",
+        "cta": "Quero meu horário"
+      },
+      "mostrar_marca": false
+    },
+    {
+      "formato": "9:16",
+      "objetivo": "angle: price objection. Free first evaluation",
+      "fundo": "light background, teal rounded panel behind the text",
+      "visual": "friendly dentist holding a tablet, photorealistic, upper half",
+      "layout": "photo top half; text panel lower half; keep top 13% and bottom 18% free of text (stories UI); logo top-left inside safe area",
+      "textos": {
+        "tag": "Em Curitiba",
+        "titulo": "Primeira avaliação gratuita",
+        "subtitulo": "Saia com o plano de tratamento na mão",
+        "cta": "Agendar agora"
+      },
+      "mostrar_marca": false
+    }
+  ]
+}

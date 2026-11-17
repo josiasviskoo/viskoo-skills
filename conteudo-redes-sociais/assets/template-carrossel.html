@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prévia do carrossel</title>
+<!-- 1) Troque as fontes aqui (título + corpo) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+/* 2) Troque os tokens da marca (veja references/design.md) */
+:root{
+  --marca:#E85D3A;
+  --marca-clara:#F28B6E;
+  --marca-escura:#A33A1F;
+  --fundo-claro:#FAF6F1;
+  --borda-clara:#EDE6DD;
+  --fundo-escuro:#1A1918;
+  --fonte-titulo:'Playfair Display', Georgia, serif;
+  --fonte-corpo:'Plus Jakarta Sans', system-ui, sans-serif;
+  --gradiente:linear-gradient(165deg,var(--marca-escura) 0%,var(--marca) 50%,var(--marca-clara) 100%);
+  /* definidos pelo JS a partir de data-formato; não edite */
+  --w:420px; --h:525px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#e9e9ec;font-family:var(--fonte-corpo);display:flex;justify-content:center;padding:32px 16px;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* ---------- Moldura do Instagram (só na prévia) ---------- */
+.ig-frame{width:var(--w);background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.12);overflow:hidden;align-self:flex-start}
+.ig-header{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.ig-avatar{width:32px;height:32px;border-radius:50%;background:var(--marca);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;overflow:hidden}
+.ig-avatar img{width:100%;height:100%;object-fit:cover}
+.ig-handle{font-size:13px;font-weight:600;color:#111}
+.ig-sub{font-size:11px;color:#777}
+.carousel-viewport{width:var(--w);height:var(--h);overflow:hidden;position:relative;cursor:grab;touch-action:pan-y;user-select:none}
+.carousel-track{display:flex;height:100%;transition:transform .35s ease}
+.ig-dots{display:flex;justify-content:center;gap:4px;padding:10px 0 2px}
+.ig-dots span{width:6px;height:6px;border-radius:50%;background:#d0d0d0}
+.ig-dots span.ativo{background:#0095f6}
+.ig-actions{display:flex;gap:14px;padding:8px 14px}
+.ig-actions svg{width:24px;height:24px}
+.ig-actions .salvar{margin-left:auto}
+.ig-caption{padding:0 14px 14px;font-size:13px;color:#111;line-height:1.45}
+.ig-caption b{font-weight:600}
+.ig-caption .tempo{display:block;margin-top:6px;font-size:10px;color:#999;letter-spacing:.3px}
+
+/* ---------- Slide ---------- */
+.slide{flex:0 0 var(--w);width:var(--w);height:var(--h);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:0 52px 56px 36px}
+.slide.centro{justify-content:center;padding-bottom:40px}
+.slide.claro{background:var(--fundo-claro);--txt:var(--fundo-escuro);--suave:#6F6A64;--tag:var(--marca);--linha:var(--borda-clara)}
+.slide.escuro{background:var(--fundo-escuro);--txt:#fff;--suave:rgba(255,255,255,.62);--tag:var(--marca-clara);--linha:rgba(255,255,255,.1)}
+.slide.marca{background:var(--gradiente);--txt:#fff;--suave:rgba(255,255,255,.82);--tag:rgba(255,255,255,.7);--linha:rgba(255,255,255,.18)}
+.slide > *:not(.bg):not(.overlay):not(.progresso):not(.seta){position:relative;z-index:2}
+.slide img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.slide .overlay{position:absolute;inset:0;z-index:1;background:rgba(255,255,255,.35)}
+.slide.escuro .overlay{background:rgba(0,0,0,.45)}
+
+/* ---------- Tipografia ---------- */
+.tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--tag);margin-bottom:14px}
+.titulo{font-family:var(--fonte-titulo);font-size:31px;font-weight:600;line-height:1.12;letter-spacing:-.4px;color:var(--txt)}
+.titulo.xl{font-size:36px}
+.titulo em{font-style:italic;color:var(--tag)}
+.corpo{font-size:14px;line-height:1.55;color:var(--suave);margin-top:14px}
+.pequeno{font-size:11.5px;color:var(--suave)}
+.numero-grande{font-family:var(--fonte-titulo);font-size:46px;font-weight:700;line-height:1;color:var(--tag);margin-bottom:10px}
+.dica-swipe{margin-top:22px;font-size:12px;font-weight:500;color:var(--suave)}
+
+/* ---------- Componentes ---------- */
+.logo{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.logo .marca-ic{width:40px;height:40px;border-radius:50%;background:var(--marca);color:#fff;display:grid;place-items:center;font-weight:700;font-size:17px}
+.slide.marca .logo .marca-ic{background:#fff;color:var(--marca-escura)}
+.logo .nome{font-size:13px;font-weight:600;letter-spacing:.5px;color:var(--txt)}
+.lista,.passos{margin-top:16px}
+.item,.passo{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--linha)}
+.item:last-child,.passo:last-child{border-bottom:0}
+.item .ic{color:var(--marca);font-size:15px;width:18px;text-align:center;line-height:1.3}
+.slide.escuro .item .ic,.slide.marca .item .ic{color:var(--tag)}
+.passo .n{font-family:var(--fonte-titulo);font-size:26px;font-weight:300;color:var(--tag);min-width:34px;line-height:1}
+.item b,.passo b{display:block;font-size:14px;font-weight:600;color:var(--txt)}
+.item span,.passo span{display:block;font-size:12px;line-height:1.45;color:var(--suave);margin-top:2px}
+.pilulas{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.pilula{font-size:11px;padding:5px 12px;border-radius:20px;background:rgba(127,127,127,.12);color:var(--tag)}
+.pilula.riscada{background:none;border:1px solid var(--linha);color:var(--suave);text-decoration:line-through}
+.citacao{margin-top:18px;padding:16px;border-radius:12px;background:rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.1)}
+.citacao .rotulo{font-size:12px;color:var(--suave);margin-bottom:6px}
+.citacao p:last-child{font-family:var(--fonte-titulo);font-style:italic;font-size:15px;line-height:1.4;color:var(--txt)}
+.slide.claro .citacao{background:rgba(0,0,0,.04);border-color:var(--linha)}
+.botao{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:12px 28px;border-radius:28px;background:var(--fundo-claro);color:var(--marca-escura);font-weight:600;font-size:14px;align-self:flex-start}
+.slide.centro .botao{align-self:center}
+.slide.centro.texto-centro{text-align:center;align-items:center}
+.amostras{display:flex;gap:8px;margin-top:16px}
+.amostras span{width:32px;height:32px;border-radius:8px;border:1px solid rgba(127,127,127,.2)}
+
+/* ---------- Barra de progresso e seta (inseridas pelo JS) ---------- */
+.progresso{position:absolute;left:0;right:0;bottom:0;padding:16px 28px 20px;z-index:10;display:flex;align-items:center;gap:10px}
+.progresso .trilho{flex:1;height:3px;border-radius:2px;overflow:hidden;background:rgba(0,0,0,.08)}
+.progresso .cheio{height:100%;border-radius:2px;background:var(--marca)}
+.progresso .cont{font-size:11px;font-weight:500;color:rgba(0,0,0,.3)}
+.slide.escuro .progresso .trilho,.slide.marca .progresso .trilho{background:rgba(255,255,255,.14)}
+.slide.escuro .progresso .cheio,.slide.marca .progresso .cheio{background:#fff}
+.slide.escuro .progresso .cont,.slide.marca .progresso .cont{color:rgba(255,255,255,.5)}
+.seta{position:absolute;right:0;top:0;bottom:0;width:48px;z-index:9;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,transparent,rgba(0,0,0,.06))}
+.seta path{stroke:rgba(0,0,0,.25)}
+.slide.escuro .seta,.slide.marca .seta{background:linear-gradient(to right,transparent,rgba(255,255,255,.08))}
+.slide.escuro .seta path,.slide.marca .seta path{stroke:rgba(255,255,255,.4)}
+
+/* ---------- Modo exportação (ativado pelo script) ---------- */
+body.exportando{padding:0;margin:0;display:block;background:none;overflow:hidden}
+body.exportando .ig-header,body.exportando .ig-dots,body.exportando .ig-actions,body.exportando .ig-caption{display:none}
+body.exportando .ig-frame{border-radius:0;box-shadow:none}
+body.exportando .carousel-track{transition:none}
+</style>
+</head>
+<body>
+
+<!-- 3) Formato: "4:5" (1080×1350), "1:1" (1080×1080) ou "9:16" (1080×1920) -->
+<div class="ig-frame" data-formato="4:5">
+
+  <div class="ig-header">
+    <div class="ig-avatar">M</div>
+    <div><div class="ig-handle">suamarca</div><div class="ig-sub">Patrocinado · Áudio original</div></div>
+  </div>
+
+  <div class="carousel-viewport"><div class="carousel-track">
+
+    <!-- 4) SLIDES: um <section class="slide claro|escuro|marca [centro]"> por slide.
+         Barra de progresso e seta são adicionadas automaticamente. -->
+
+    <!-- 1 · Capa / gancho -->
+    <section class="slide claro centro">
+      <div class="logo"><div class="marca-ic">M</div><div class="nome">Sua Marca</div></div>
+      <span class="tag">Guia rápido</span>
+      <h1 class="titulo xl">7 erros que estão <em>matando</em> o alcance dos seus posts</h1>
+      <p class="dica-swipe">Arraste para ver →</p>
+    </section>
+
+    <!-- 2 · Problema -->
+    <section class="slide escuro">
+      <span class="tag">O problema</span>
+      <h2 class="titulo">Você posta todo dia e ninguém salva</h2>
+      <p class="corpo">Frequência sem estratégia só cansa você e o algoritmo. O problema quase nunca é o volume: é o formato.</p>
+      <div class="pilulas"><span class="pilula riscada">Post aleatório</span><span class="pilula riscada">Texto gigante</span><span class="pilula riscada">Sem CTA</span></div>
+    </section>
+
+    <!-- 3 · Solução -->
+    <section class="slide marca">
+      <span class="tag">A virada</span>
+      <h2 class="titulo">Uma ideia por slide. Um motivo para salvar.</h2>
+      <div class="citacao"><p class="rotulo">Regra de ouro</p><p>"Se não dá para entender numa miniatura, não está pronto."</p></div>
+    </section>
+
+    <!-- 4 · Lista de benefícios -->
+    <section class="slide claro">
+      <span class="tag">O que muda</span>
+      <h2 class="titulo">Carrossel bem feito entrega</h2>
+      <div class="lista">
+        <div class="item"><span class="ic">✦</span><div><b>Mais salvamentos</b><span>Conteúdo de referência a pessoa guarda.</span></div></div>
+        <div class="item"><span class="ic">✦</span><div><b>Mais tempo no post</b><span>Cada swipe conta como interação.</span></div></div>
+        <div class="item"><span class="ic">✦</span><div><b>Mais seguidores</b><span>Valor consistente gera confiança.</span></div></div>
+      </div>
+    </section>
+
+    <!-- 5 · Dica numerada -->
+    <section class="slide escuro">
+      <p class="numero-grande">01</p>
+      <h2 class="titulo">Seu gancho é vago demais</h2>
+      <p class="corpo">"Dicas de marketing" não diz nada. Prometa um resultado: "3 ajustes que dobraram meus salvamentos".</p>
+    </section>
+
+    <!-- 6 · Passos -->
+    <section class="slide claro">
+      <span class="tag">Como aplicar</span>
+      <h2 class="titulo">Em 3 passos</h2>
+      <div class="passos">
+        <div class="passo"><span class="n">01</span><div><b>Escreva o roteiro</b><span>Título e uma frase por slide.</span></div></div>
+        <div class="passo"><span class="n">02</span><div><b>Defina a paleta</b><span>Uma cor da marca, seis tons derivados.</span></div></div>
+        <div class="passo"><span class="n">03</span><div><b>Revise na miniatura</b><span>Se não lê pequeno, corte texto.</span></div></div>
+      </div>
+    </section>
+
+    <!-- 7 · CTA (sem seta, barra 100%) -->
+    <section class="slide marca centro texto-centro">
+      <div class="logo"><div class="marca-ic">M</div><div class="nome">Sua Marca</div></div>
+      <h2 class="titulo">Gostou? Salve para usar no próximo post 🔖</h2>
+      <p class="corpo">Siga para mais conteúdos assim toda semana.</p>
+      <div class="botao">Seguir @suamarca</div>
+    </section>
+
+  </div></div>
+
+  <div class="ig-dots"></div>
+  <div class="ig-actions">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8"><path d="M12 20.5s-7.5-4.6-7.5-10.1A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8c0 5.5-7.5 10.1-7.5 10.1z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.6-4.4A8.4 8.4 0 1 1 20.5 11.6z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4 18-7z"/></svg>
+    <svg class="salvar" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.8"><path d="M19 21l-7-5-7 5V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1z"/></svg>
+  </div>
+  <div class="ig-caption">
+    <!-- 5) Legenda da prévia -->
+    <b>suamarca</b> 7 erros que matam o alcance (e como corrigir cada um). Salve para revisar antes de postar 🔖
+    <span class="tempo">HÁ 2 HORAS</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const FORMATOS={'4:5':[420,525],'1:1':[420,420],'9:16':[405,720]};
+  const frame=document.querySelector('.ig-frame');
+  const [W,H]=FORMATOS[frame.dataset.formato]||FORMATOS['4:5'];
+  document.documentElement.style.setProperty('--w',W+'px');
+  document.documentElement.style.setProperty('--h',H+'px');
+
+  const track=document.querySelector('.carousel-track');
+  const slides=[...track.querySelectorAll('.slide')];
+  const total=slides.length;
+  const seta='<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  slides.forEach((s,i)=>{
+    const p=document.createElement('div');
+    p.className='progresso';
+    p.innerHTML='<div class="trilho"><div class="cheio" style="width:'+((i+1)/total*100)+'%"></div></div><span class="cont">'+(i+1)+'/'+total+'</span>';
+    s.appendChild(p);
+    if(i<total-1){const a=document.createElement('div');a.className='seta';a.innerHTML=seta;s.appendChild(a);}
+  });
+
+  const dots=document.querySelector('.ig-dots');
+  dots.innerHTML=slides.map(()=>'<span></span>').join('');
+  let atual=0;
+  function ir(i){
+    atual=Math.max(0,Math.min(total-1,i));
+    track.style.transform='translateX('+(-atual*W)+'px)';
+    [...dots.children].forEach((d,j)=>d.classList.toggle('ativo',j===atual));
+  }
+  window.irParaSlide=ir;          // usado pelo scripts/exportar_slides.py
+  window.totalSlides=total;
+  window.dimensoesSlide=[W,H];
+  ir(0);
+
+  const vp=document.querySelector('.carousel-viewport');
+  let x0=null;
+  vp.addEventListener('pointerdown',e=>{x0=e.clientX;vp.setPointerCapture(e.pointerId);});
+  vp.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>40)ir(atual+(dx<0?1:-1));});
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')ir(atual+1);if(e.key==='ArrowLeft')ir(atual-1);});
+})();
+</script>
+</body>
+</html>

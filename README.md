@@ -4,11 +4,36 @@ Repositório **privado**. Cada pasta é uma skill: a plataforma lê este reposit
 no lugar certo (transcrição, cliente, tarefa, post ou chat). O cliente nunca vê este repositório.
 
 ```
-ata-reuniao/
+ata-reuniao/            (cada skill: uma pasta na raiz, com o mesmo nome do id)
   viskoo.json      ← o manifesto: onde aparece, do que precisa, o que entrega
   SKILL.md         ← o processo (o que a IA segue)
   referencias/     ← opcional: outros .md que entram junto (modelos, exemplos)
 ```
+
+## Catálogo
+
+| Pasta | Botão | Modo | Aparece em |
+|---|---|---|---|
+| `ata-reuniao/` | 📝 Gerar ATA da reunião | texto | transcrição, cliente, chat |
+| `extrator-tarefas/` | ✅ Extrair tarefas da reunião | texto | transcrição, chat |
+| `roteiro-reels/` | 🎥 Roteiros de Reels (orgânico) | texto | post, cliente, tarefa, chat |
+| `reel-video/` | 🎬 Reel em vídeo: roteiro e edição | agente | post, cliente, tarefa, chat |
+| `conteudo-redes-sociais/` | 🖼️ Artes para redes sociais | agente | post, cliente, tarefa, chat |
+
+`roteiro-reels` × `reel-video`: o primeiro é rápido e barato (texto), vários roteiros orgânicos de locução no método
+gancho, desenvolvimento e fechamento. O segundo usa o template "Espelho Local" (8 blocos, teleprompter, shot list,
+hooks), pensado sobretudo para anúncio de negócio local, e também **edita os vídeos gravados** até o MP4 final.
+
+### O que o servidor precisa para as skills do modo agente
+
+| Skill | Ferramentas | Rede |
+|---|---|---|
+| `reel-video` (edição) | `ffmpeg`, `whisper-cli` + modelo `ggml-large-v3-turbo.bin` (`WHISPER_MODEL`), Python 3 com `numpy` e `opencv-python-headless` (`mediapipe` opcional, via `VSL_PYTHON`), Node 20+, Google Chrome (`CHROME`) | `npm` na primeira preparação do motor (`hyperframes`, `gsap`, `playwright`); Codex só se faltar imagem |
+| `reel-video` (roteiro) | nenhuma além do Claude | nenhuma |
+| `conteudo-redes-sociais` | Codex CLI logado com ChatGPT (`codex login status`), Python 3 com `pillow` (`playwright` opcional) | acesso ao Codex/OpenAI para gerar as imagens |
+
+Diagnóstico da edição: `python3 reel-video/edicao/corte/scripts/0-checar.py`. Cada uma também funciona fora da
+plataforma, como skill comum do Claude Code (veja o `README.md` dentro da pasta).
 
 ## Versões
 

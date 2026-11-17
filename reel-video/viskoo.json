@@ -1,0 +1,26 @@
+{
+  "id": "reel-video",
+  "nome": "Reel em vídeo: roteiro e edição",
+  "descricao": "Roteiro de anúncio ou reel no template Espelho Local (teleprompter, shot list, hooks) ou a edição completa dos vídeos gravados: corte da fala, motor VSL animado, legenda e som, entregue em MP4 9:16.",
+  "icone": "🎬",
+  "aparece_em": ["post", "projeto", "tarefa", "chat"],
+  "entradas": [
+    { "id": "cliente", "tipo": "projeto", "rotulo": "Cliente", "obrigatorio": true, "origem": "contexto_ou_pergunta" },
+    { "id": "post", "tipo": "post", "rotulo": "Post do calendário", "obrigatorio": false, "origem": "contexto" },
+    { "id": "tarefa", "tipo": "tarefa", "rotulo": "Tarefa", "obrigatorio": false, "origem": "contexto" },
+    { "id": "etapa", "tipo": "escolha", "rotulo": "O que fazer", "opcoes": ["Roteiro", "Edição dos vídeos gravados"], "obrigatorio": true },
+    { "id": "objetivo", "tipo": "escolha", "rotulo": "Reel orgânico ou anúncio", "opcoes": ["Reel orgânico", "Anúncio (Meta Ads)"], "obrigatorio": true },
+    { "id": "tema", "tipo": "texto_longo", "rotulo": "Tema, oferta ou ideia", "ajuda": "No roteiro: o serviço, a dor e a oferta. Na edição: opcional (o que destacar).", "obrigatorio": false },
+    { "id": "videos", "tipo": "links", "rotulo": "Vídeos e fotos gravados", "ajuda": "Só na edição: links da fala (em ordem: 01, 02...), dos sobrepostos (B-roll) e das fotos. Diga no nome ou ao lado qual é qual.", "obrigatorio": false },
+    { "id": "roteiro", "tipo": "texto_longo", "rotulo": "Roteiro aprovado", "ajuda": "Opcional na edição: cole o roteiro usado na gravação para a edição seguir o mapa bloco a bloco.", "obrigatorio": false }
+  ],
+  "perguntas_ia": true,
+  "materiais": true,
+  "modo": "agente",
+  "nivel": "pro",
+  "saidas": [
+    { "tipo": "arquivos" }
+  ],
+  "teto_usd": 8,
+  "minutos": 90
+}

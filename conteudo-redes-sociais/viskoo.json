@@ -1,0 +1,27 @@
+{
+  "id": "conteudo-redes-sociais",
+  "nome": "Artes para redes sociais",
+  "descricao": "Carrossel, post, story, thumbnail ou lote de anúncios: copy com gancho, sistema visual da marca, imagens geradas pelo Codex no tamanho exato, prévia, PDF, legenda e hashtags.",
+  "icone": "🖼️",
+  "aparece_em": ["post", "projeto", "tarefa", "chat"],
+  "entradas": [
+    { "id": "cliente", "tipo": "projeto", "rotulo": "Cliente", "obrigatorio": true, "origem": "contexto_ou_pergunta" },
+    { "id": "post", "tipo": "post", "rotulo": "Post do calendário", "obrigatorio": false, "origem": "contexto" },
+    { "id": "tarefa", "tipo": "tarefa", "rotulo": "Tarefa", "obrigatorio": false, "origem": "contexto" },
+    { "id": "formato", "tipo": "escolha", "rotulo": "O que criar", "opcoes": ["Carrossel", "Post único", "Story", "Thumbnail do YouTube", "Anúncios Meta Ads", "Variantes A/B"], "obrigatorio": true },
+    { "id": "redes", "tipo": "multipla", "rotulo": "Onde vai ser publicado", "opcoes": ["Instagram", "LinkedIn", "Facebook", "X", "TikTok", "YouTube", "Pinterest"], "obrigatorio": true },
+    { "id": "tema", "tipo": "texto_longo", "rotulo": "Mensagem e CTA", "ajuda": "Opcional quando vem de um post ou tarefa", "obrigatorio": false },
+    { "id": "enxuto", "tipo": "escolha", "rotulo": "Estilo da arte", "opcoes": ["Completa (logo, CTA na arte)", "Orgânico enxuto (só headline e subheadline)"], "obrigatorio": false },
+    { "id": "referencias", "tipo": "links", "rotulo": "Fotos e referências", "ajuda": "Opcional: foto do rosto, produto, prints ou artes de referência de design", "obrigatorio": false }
+  ],
+  "perguntas_ia": true,
+  "materiais": true,
+  "modo": "agente",
+  "nivel": "padrao",
+  "saidas": [
+    { "tipo": "arquivos" },
+    { "tipo": "texto" }
+  ],
+  "teto_usd": 3,
+  "minutos": 45
+}

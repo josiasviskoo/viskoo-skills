@@ -1,0 +1,119 @@
+{
+  "projeto": "7-erros-alcance",
+  "tipo": "Instagram carousel slide",
+  "formato": "4:5",
+  "marca": {
+    "nome": "Sua Marca",
+    "handle": "@suamarca",
+    "cores": {
+      "primary accent": "#E85D3A",
+      "light accent": "#F28B6E",
+      "dark accent": "#A33A1F",
+      "light background": "#FAF6F1",
+      "dark background": "#1A1918"
+    },
+    "fontes": {
+      "headlines": "elegant high-contrast serif like Playfair Display, semibold",
+      "body and labels": "clean geometric sans-serif like Plus Jakarta Sans"
+    }
+  },
+  "estilo": "premium editorial social media design, flat vector illustrations with subtle grain, lots of negative space, left-aligned text block, consistent 8% side margins, modern and minimal",
+  "restricoes": [],
+  "evitar": ["stock-photo look", "clip art", "3D emoji", "busy backgrounds", "drop shadows on text"],
+  "referencias": [],
+  "legenda": "7 erros que matam o alcance (e como corrigir cada um). Salve para revisar antes de postar 🔖\n\n#marketingdigital #dicasdeinstagram #carrossel",
+  "slides": [
+    {
+      "tipo": "capa",
+      "objetivo": "hook cover slide that stops the scroll",
+      "fundo": "warm off-white #FAF6F1",
+      "visual": "small flat illustration of a smartphone with a falling engagement chart, top-right area",
+      "layout": "brand lockup (orange circle with letter M + 'Sua Marca') at top-left; headline large in the lower-middle area; 'Arraste para ver →' small below the headline",
+      "textos": {
+        "tag": "GUIA RÁPIDO",
+        "titulo": "7 erros que estão matando o alcance dos seus posts",
+        "rodape": "Arraste para ver →"
+      }
+    },
+    {
+      "tipo": "problema",
+      "objetivo": "pain point slide",
+      "fundo": "near-black #1A1918",
+      "visual": "three small outlined pill shapes with strikethrough labels under the body text",
+      "layout": "text block anchored to the lower half, left-aligned",
+      "textos": {
+        "tag": "O PROBLEMA",
+        "titulo": "Você posta todo dia e ninguém salva",
+        "corpo": "Frequência sem estratégia só cansa você e o algoritmo.",
+        "itens": ["Post aleatório", "Texto gigante", "Sem CTA"]
+      }
+    },
+    {
+      "tipo": "solucao",
+      "objetivo": "solution slide",
+      "fundo": "diagonal gradient from #A33A1F to #E85D3A to #F28B6E",
+      "visual": "translucent rounded quote box",
+      "layout": "headline in the middle; quote box below it",
+      "textos": {
+        "tag": "A VIRADA",
+        "titulo": "Uma ideia por slide. Um motivo para salvar.",
+        "corpo": "“Se não dá para entender numa miniatura, não está pronto.”"
+      }
+    },
+    {
+      "tipo": "lista",
+      "objetivo": "benefits list slide",
+      "fundo": "warm off-white #FAF6F1",
+      "visual": "small orange sparkle icons as bullets, thin dividers between items",
+      "layout": "headline at upper-middle, 3 list items below, each with bold label and one gray line",
+      "textos": {
+        "tag": "O QUE MUDA",
+        "titulo": "Carrossel bem feito entrega",
+        "itens": [
+          "Mais salvamentos: conteúdo de referência a pessoa guarda",
+          "Mais tempo no post: cada swipe conta como interação",
+          "Mais seguidores: valor consistente gera confiança"
+        ]
+      }
+    },
+    {
+      "tipo": "dica",
+      "objetivo": "numbered tip slide",
+      "fundo": "near-black #1A1918",
+      "visual": "huge number '01' in light accent color",
+      "layout": "big number at upper-left, headline and body below, all left-aligned",
+      "textos": {
+        "titulo": "Seu gancho é vago demais",
+        "corpo": "“Dicas de marketing” não diz nada. Prometa um resultado concreto."
+      }
+    },
+    {
+      "tipo": "passos",
+      "objetivo": "how-to steps slide",
+      "fundo": "warm off-white #FAF6F1",
+      "visual": "large thin serif step numbers 01 02 03 in accent color, thin dividers",
+      "layout": "headline at top third; 3 steps stacked below",
+      "textos": {
+        "tag": "COMO APLICAR",
+        "titulo": "Em 3 passos",
+        "itens": [
+          "01 Escreva o roteiro",
+          "02 Defina a paleta",
+          "03 Revise na miniatura"
+        ]
+      }
+    },
+    {
+      "tipo": "cta",
+      "objetivo": "call-to-action closing slide",
+      "fundo": "diagonal gradient from #A33A1F to #E85D3A to #F28B6E",
+      "visual": "white circle logo with letter M above the headline, bookmark icon",
+      "layout": "everything centered; pill-shaped off-white button at the bottom third",
+      "textos": {
+        "titulo": "Gostou? Salve para usar no próximo post",
+        "corpo": "Siga para mais conteúdos assim toda semana.",
+        "cta": "Seguir @suamarca"
+      }
+    }
+  ]
+}

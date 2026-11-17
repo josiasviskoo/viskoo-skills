@@ -1,0 +1,40 @@
+{
+  "projeto": "padaria-semana-12",
+  "modo": "post",
+  "tipo": "Instagram feed post (organic)",
+  "formato": "1:1",
+  "marca": {
+    "nome": "Padaria Trigo Bom",
+    "cores": { "brand brown": "#5A3A22", "brand cream": "#F6EBDD", "accent orange": "#E07A1F" },
+    "fontes": { "all texts": "Montserrat, bold headline and regular subheadline" }
+  },
+  "estilo": "organic Instagram post, appetizing food photography, warm and inviting",
+  "restricoes": [
+    "only the headline and subheadline listed below: no logo, no city tag, no button, no list, no badge, no footer, no phone, no website, no hashtag (CTA and details go in the caption)"
+  ],
+  "referencias": [
+    { "arquivo": "logo.png", "papel": "brand logo ONLY to read the color palette. The logo must NOT appear in the image" }
+  ],
+  "legenda": "Pão de fermentação natural saindo agora 🥖 Passa aqui antes das 10h e garante o seu.",
+  "variantes": {
+    "A": {
+      "descricao": "dark and moody: bread on a rustic wooden table, low key light, headline stacked on the left over a dark area, dominant color brand brown",
+      "referencias": [ { "arquivo": "ref-a.jpg", "papel": "design reference for variant A: follow its layout, typography treatment and graphic elements" } ]
+    },
+    "B": {
+      "descricao": "light and airy: top-down flat lay on cream linen, headline centered in a cream rounded box, orange accent shapes, dominant color brand cream",
+      "referencias": [ { "arquivo": "ref-b.jpg", "papel": "design reference for variant B: follow its layout, typography treatment and graphic elements" } ]
+    }
+  },
+  "slides": [
+    {
+      "objetivo": "announce the fresh sourdough batch of the morning",
+      "visual": "freshly baked sourdough loaf with crispy crust, steam rising",
+      "textos": {
+        "titulo": "Fermentação natural, saindo agora",
+        "subtitulo": "Casca crocante e miolo macio"
+      },
+      "mostrar_marca": false
+    }
+  ]
+}
